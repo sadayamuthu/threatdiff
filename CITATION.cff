@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using these metadata."
+type: software
+title: "ThreatDiff: Threat models generated from agent configuration, checked on every pull request"
+abstract: >-
+  ThreatDiff builds a capability graph from an AI agent's configuration
+  (system prompt, tools, MCP servers, data sources and triggers), finds paths
+  from untrusted input to dangerous actions, and reports the paths each pull
+  request opens or closes, labelled with OWASP and MITRE ATLAS identifiers.
+authors:
+  - family-names: Sadayamuthu
+    given-names: Karthikeyan
+    orcid: "https://orcid.org/0009-0008-3539-6048"
+license: Apache-2.0
+repository-code: "https://github.com/sadayamuthu/threatdiff"
+url: "https://openastra.org"
+keywords:
+  - AI agents
+  - threat modeling
+  - MCP
+  - OWASP
+  - MITRE ATLAS
+  - CI

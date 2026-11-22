@@ -1,4 +1,22 @@
-# threatdiff
+<div align="center">
+
+# ThreatDiff
+
+<h3>Threat models generated from agent configuration, checked on every pull request</h3>
+
+[![Status](https://img.shields.io/badge/status-design%20stage-orange?style=flat-square)](ROADMAP.md)
+[![Go 1.26+](https://img.shields.io/badge/go-1.26+-00ADD8?style=flat-square)](https://go.dev/dl/)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE)
+
+---
+
+[How it works](#how-it-works) · [Thesis](THESIS.md) · [Roadmap](ROADMAP.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
+
+</div>
+
+---
+
+## What is ThreatDiff?
 
 A threat model that is generated from your agent's configuration and checked
 on every pull request. `threatdiff` reads what an agent can see and do (its
@@ -12,6 +30,8 @@ and the ones it closes.
 > [OpenAstra](https://openastra.org) research agenda, area VII: AI Threat
 > Modeling & Risk Assessment.
 
+---
+
 ## The problem
 
 Threat models for AI systems are usually a diagram someone draws once, before
@@ -20,6 +40,8 @@ scope, or lets the agent read a new inbox, and the diagram is out of date the
 same day. The risky changes look harmless in a diff. Nobody reviewing
 `tools: [..., "send_payment"]` sees that the same agent also summarizes
 inbound email.
+
+---
 
 ## How it works
 
@@ -40,6 +62,8 @@ inbound email.
 5. **Diff.** Compare the graph at the PR's head with the graph at its base and
    report new and removed paths, with block or warn verdicts.
 
+---
+
 ## Example (proposed)
 
 ```console
@@ -59,12 +83,16 @@ CLOSED    info   web page -> research-agent -> shell.exec
 2 blocking findings. Exit 1.
 ```
 
+---
+
 ## Planned surfaces
 
 - CLI: `threatdiff check`, `threatdiff graph` (Mermaid/DOT/JSON), `threatdiff explain <path>`
 - Pre-commit hook and GitHub Action that comment the diff on the PR
 - MCP server, so a coding agent can check its own config changes
 - SARIF output for code scanning
+
+---
 
 ## Maps to
 
@@ -75,24 +103,28 @@ CLOSED    info   web page -> research-agent -> shell.exec
 | MITRE ATLAS | AML.T0051 LLM Prompt Injection and related techniques |
 | NIST SP 800-53 Rev. 5 | RA-3 Risk Assessment, SA-11 Developer Testing, AC-4 Information Flow Enforcement |
 
+---
+
 ## Design principles
 
 - **Local and deterministic.** No model in the loop; the same config gives the same graph.
 - **Diff first.** A PR comment lists what changed, not 200 standing findings.
 - **Explain every path.** Each finding names the file and line that created it.
 
+---
+
 ## Non-goals
 
 - Runtime enforcement. That is [IntentLock](https://github.com/sadayamuthu/intentlock) and [Taintline](https://github.com/sadayamuthu/taintline).
 - Scanning model weights or training pipelines.
 
+---
+
 ## Roadmap
 
-1. Graph model and `threatdiff.yaml` schema
-2. Parsers for MCP client configs and Claude Code / Codex settings
-3. Path search, trifecta detection, OATC labels
-4. `check` with base/head diff, GitHub Action, SARIF
-5. Parsers for agent framework code
+The plan, from the first working version to 1.0, is in [ROADMAP.md](ROADMAP.md). The reasoning behind the project, and what would make us stop, is in [THESIS.md](THESIS.md).
+
+---
 
 ## Related OpenAstra projects
 
@@ -100,6 +132,32 @@ CLOSED    info   web page -> research-agent -> shell.exec
 - [AgentRisk](https://github.com/sadayamuthu/agentrisk): turns the graph into a score
 - [ControlGate](https://github.com/sadayamuthu/controlgate): the same pre-merge gate model, for NIST controls
 
+---
+
+## Contributing
+
+Design feedback, real-world cases and fixes are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to help while the project is at the design stage, and [GOVERNANCE.md](GOVERNANCE.md) for how decisions are made.
+
+---
+
+## Security
+
+Please report vulnerabilities privately through [GitHub security advisories](https://github.com/sadayamuthu/threatdiff/security/advisories/new), not in a public issue. See [SECURITY.md](SECURITY.md) for what to include and what's in scope.
+
+---
+
 ## License
 
-To be decided before the first release.
+[Apache License 2.0](LICENSE)
+
+---
+
+<div align="center">
+
+**ThreatDiff: threat models generated from agent configuration, checked on every pull request**
+
+ThreatDiff is managed by [OpenAstra](https://openastra.org)
+
+[GitHub](https://github.com/sadayamuthu/threatdiff) · [Thesis](THESIS.md) · [Roadmap](ROADMAP.md)
+
+</div>
