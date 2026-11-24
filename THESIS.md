@@ -50,7 +50,7 @@ one agent) gives a crisp, widely understood rule to check.
 
 ## Not a bet on
 
-Runtime enforcement (IntentLock, Taintline) or scanning models and training
+Runtime enforcement (AgentLock, AgentTaint) or scanning models and training
 pipelines.
 
 ## Where it fits

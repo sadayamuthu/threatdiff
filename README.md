@@ -115,7 +115,7 @@ CLOSED    info   web page -> research-agent -> shell.exec
 
 ## Non-goals
 
-- Runtime enforcement. That is [IntentLock](https://github.com/sadayamuthu/intentlock) and [Taintline](https://github.com/sadayamuthu/taintline).
+- Runtime enforcement. That is [AgentLock](https://github.com/sadayamuthu/agentlock) and [AgentTaint](https://github.com/sadayamuthu/agenttaint).
 - Scanning model weights or training pipelines.
 
 ---
